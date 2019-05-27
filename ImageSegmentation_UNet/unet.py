@@ -61,7 +61,7 @@ def create_model():
     model.compile(optimizer=optimizer,
                   loss='categorical_crossentropy',
                   metrics=['accuracy'])
-    print(model.summary())
+    # print(model.summary())
     return model
 
 
