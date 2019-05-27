@@ -78,11 +78,11 @@ class UNet(object):
         :return: history: details about the training history at each epoch
         """
         x = x.values.astype('float32')
-        x = x.reshape(x.shape[0], 28, 28, 1)
+        x = x.reshape(x.shape[0], 572, 572, 1)
 
         if 'validation_data' in kwargs:
             vx = kwargs['validation_data'][0].values.astype('float32')
-            vx = vx.reshape(vx.shape[0], 28, 28, 1)
+            vx = vx.reshape(vx.shape[0], 572, 572, 1)
             vy = kwargs['validation_data'][1]
             kwargs['validation_data'] = (vx, vy)
 
@@ -111,12 +111,12 @@ class UNet(object):
 
     def predict(self, x, **kwargs):
         x = x.values.astype('float32')
-        x = x.reshape(x.shape[0], 28, 28, 1)
+        x = x.reshape(x.shape[0], 572, 572, 1)
         return self.model.predict(x, **kwargs)
 
     def score(self, x, y, **kwargs):
         x = x.values.astype('float32')
-        x = x.reshape(x.shape[0], 28, 28, 1)
+        x = x.reshape(x.shape[0], 572, 572, 1)
 
         outputs = self.model.evaluate(x, y, **kwargs)
         for name, output in zip(self.model.metrics_names, outputs):
